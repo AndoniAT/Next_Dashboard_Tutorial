@@ -2,13 +2,15 @@
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
   const pathname = usePathname(); // ${pathname} is the current path, in your case, "/dashboard/invoices".
   const { replace } = useRouter();
 
-  function handleSearch(term: string) {
+  // By debouncing, you can reduce the number of requests sent to your database, thus saving resources.
+  const handleSearch = useDebouncedCallback((term) => {
     setTimeout(() => {
       console.log(`Searching... ${term}`);
     }, 3000);
@@ -20,6 +22,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     * you can use it to get the params string like ?page=1&query=a.
     */
     const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
 
     if (term) {
       params.set('query', term);
@@ -33,7 +36,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     (which you learned about in the chapter on navigating between pages. */
     replace(`${pathname}?${params.toString()}`);
 
-  }
+  }, 300);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
