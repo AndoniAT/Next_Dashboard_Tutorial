@@ -1,5 +1,8 @@
-## Next.js App Router Course - Starter
+<h1 style="text-align:center"> NEXT.JS Course</h1>
+<h6 style="text-align:center">Andoni ALONSO TORT</h6>
+<br/>
+Tutorial from the official site of [Nextjs](https://nextjs.org/learn/dashboard-app).
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
-
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+To run the project :
+    - `npm install`
+    - `npm run dev`
