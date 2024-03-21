@@ -37,3 +37,9 @@ Then, in your .env file, add your generated key to the AUTH_SECRET variable:
     AUTH_SECRET=your-secret-key
 
 For auth to work in production, you'll need to update your environment variables in your Vercel project too. Check out this [guide](https://vercel.com/docs/projects/environment-variables) on how to add environment variables on Vercel.
+
+<h5>Try it out</h5>
+Now, try it out. You should be able to log in and out of your application using the following credentials:
+
+Email: user@nextmail.com
+Password: 123456
