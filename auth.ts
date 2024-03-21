@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
- 
+import Credentials from 'next-auth/providers/credentials';
+
 /**
  * It's good practice to hash passwords before storing them in a database. 
  * Hashing converts a password into a fixed-length string of characters, which appears random, 
@@ -16,4 +17,12 @@ import { authConfig } from './auth.config';
  */
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
+  /* Next, you will need to add the providers option for NextAuth.js. providers is an array 
+  where you list different login options such as Google or GitHub. 
+  For this course, we will focus on using the Credentials provider only. *
+  
+  Node : Although we're using the Credentials provider, it's generally recommended to use 
+  alternative providers such as OAuth or email providers. See the NextAuth.js docs for a full list of options.
+  */
+  providers: [Credentials({})]
 });
